@@ -258,13 +258,13 @@
         </div>
 
         <div class="controls">
-            <button class="btn-primary" onclick="startSystem()">🚀 Start System</button>
-            <button class="btn-success" onclick="waterNow()">💧 Water Now</button>
-            <button class="btn-warning" onclick="trainModel()">🧠 Train AI</button>
-            <button class="btn-info" onclick="showStorageStats()">📊 Storage Stats</button>
-            <button class="btn-info" onclick="exportData()">📤 Export Data</button>
-            <button class="btn-danger" onclick="clearData()">🗑️ Clear Data</button>
-            <button class="btn-danger" onclick="stopSystem()">🛑 Stop System</button>
+            <button class="btn-primary" onclick="irrigationSystem.start()">🚀 Start System</button>
+            <button class="btn-success" onclick="irrigationSystem.water()">💧 Water Now</button>
+            <button class="btn-warning" onclick="irrigationSystem.trainModel()">🧠 Train AI</button>
+            <button class="btn-info" onclick="irrigationSystem.showStats()">📊 Storage Stats</button>
+            <button class="btn-info" onclick="irrigationSystem.exportData()">📤 Export Data</button>
+            <button class="btn-danger" onclick="irrigationSystem.clearData()">🗑️ Clear Data</button>
+            <button class="btn-danger" onclick="irrigationSystem.stop()">🛑 Stop System</button>
         </div>
 
         <div id="statusMessage"></div>
@@ -797,3 +797,15 @@
                 
                 this.logSystemEvent('All data cleared', 'warning');
             }
+        }
+
+        // Global system instance
+        let irrigationSystem;
+
+        // Initialize the system when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            irrigationSystem = new SmartIrrigationWithStorage();
+        });
+    </script>
+</body>
+</html>
